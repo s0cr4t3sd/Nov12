@@ -26,4 +26,44 @@ public class Deportivo extends Vehiculo{
         super();
         this.caballos = 200;
     }
+
+    public int getCaballos() {
+        return caballos;
+    }
+
+    public void setCaballos(int caballos) {
+        this.caballos = caballos;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 67 * hash + this.caballos;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Deportivo other = (Deportivo) obj;
+        if (this.caballos != other.caballos) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return ":" + caballos;
+    }
+    
+    
 }

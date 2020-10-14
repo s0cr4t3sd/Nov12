@@ -6,6 +6,7 @@
 package ejercicio4;
 
 import java.util.Objects;
+import java.util.Random;
 
 /**
  *
@@ -24,7 +25,7 @@ public abstract class Vehiculo {
     }
     
     public Vehiculo (){
-        this.matricula = "0000AAA";
+        this.matricula = this.genMatricula();
         this.marca = "Hacendado";
         this.modelo = "No";
         this.color = "Rojo";
@@ -109,6 +110,21 @@ public abstract class Vehiculo {
         return matricula + ":" + marca + ":" + modelo + ":" + color + ":" + nPlazas;
     }
     
-    
+    private String genMatricula(){
+        Random rdn = new Random();
+        String matricula = "";
+        char car;
+        
+        for(int i = 0; i < 4; i++){
+            matricula += rdn.nextInt(10);
+        }
+        
+        for (int i = 0; i < 3; i++) {
+            car = (char) (rdn.nextInt(25)+65);
+            matricula += String.valueOf(car);
+        }
+        
+        return matricula;
+    }
     
 }
