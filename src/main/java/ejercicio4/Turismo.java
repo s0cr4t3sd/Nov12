@@ -26,6 +26,12 @@ public final class Turismo extends Vehiculo{
         super();
         this.baca = false;
     }
+    
+    //CONSTRUCTOR COPIA CON HERENCIA
+    public Turismo(Turismo turismo){
+        super(turismo.getMatricula(), turismo.getMarca(), turismo.getModelo(), turismo.getColor(), turismo.getnPlazas());
+        this.baca = turismo.baca;
+    }
 
     public boolean isBaca() {
         return baca;

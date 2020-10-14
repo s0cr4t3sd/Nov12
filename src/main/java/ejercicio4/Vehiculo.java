@@ -31,6 +31,15 @@ public abstract class Vehiculo {
         this.color = "Rojo";
         this.nPlazas = 5;
     }
+    
+    //CONSTRUCTOR PARA COPIAR UN OBJETO VEHICULO
+    public Vehiculo (Vehiculo vehiculo){
+        this.matricula = vehiculo.matricula;
+        this.marca = vehiculo.marca;
+        this.modelo = vehiculo.modelo;
+        this.color = vehiculo.color;
+        this.nPlazas = vehiculo.nPlazas;
+    }
 
     public String getMatricula() {
         return matricula;

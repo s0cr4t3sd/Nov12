@@ -28,6 +28,12 @@ public final class Furgoneta extends Vehiculo{
         super();
         this.tam = Tamanio.PEQUENIA;
     }
+    
+    //CONSTRUCTOR COPIA CON HERENCIA
+    public Furgoneta(Furgoneta furgoneta){
+        super(furgoneta.getMatricula(), furgoneta.getMarca(), furgoneta.getModelo(), furgoneta.getColor(), furgoneta.getnPlazas());
+        this.tam = furgoneta.tam;
+    }
 
     public Tamanio getTam() {
         return tam;

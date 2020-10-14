@@ -26,6 +26,12 @@ public final class Deportivo extends Vehiculo{
         super();
         this.caballos = 200;
     }
+    
+    //CONSTRUCTOR COPIA CON HERENCIA
+    public Deportivo(Deportivo deportivo){
+        super(deportivo.getMatricula(), deportivo.getMarca(), deportivo.getModelo(), deportivo.getColor(), deportivo.getnPlazas());
+        this.caballos = deportivo.caballos;
+    }
 
     public int getCaballos() {
         return caballos;
