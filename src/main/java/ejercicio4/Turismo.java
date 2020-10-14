@@ -9,7 +9,7 @@ package ejercicio4;
  *
  * @author cronida
  */
-public class Turismo extends Vehiculo{
+public final class Turismo extends Vehiculo{
     private boolean baca;
 
     public Turismo(boolean baca, String matricula, String marca, String modelo, String color, int nPlazas) {
@@ -63,7 +63,7 @@ public class Turismo extends Vehiculo{
     @Override
     public String toString() {
         String respuesta = (baca)? "Si":"No";
-        return ":" + respuesta;
+        return super.toString()+":" + respuesta;
     }
     
     

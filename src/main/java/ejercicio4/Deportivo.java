@@ -9,7 +9,7 @@ package ejercicio4;
  *
  * @author cronida
  */
-public class Deportivo extends Vehiculo{
+public final class Deportivo extends Vehiculo{
     private int caballos;
 
     public Deportivo(int caballos, String matricula, String marca, String modelo, String color, int nPlazas) {
@@ -62,7 +62,7 @@ public class Deportivo extends Vehiculo{
 
     @Override
     public String toString() {
-        return ":" + caballos;
+        return super.toString()+":" + caballos;
     }
     
     

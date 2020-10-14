@@ -11,7 +11,7 @@ import java.util.Objects;
  *
  * @author cronida
  */
-public class Furgoneta extends Vehiculo{
+public final class Furgoneta extends Vehiculo{
     private Tamanio tam;
 
     public Furgoneta(Tamanio tam, String matricula, String marca, String modelo, String color, int nPlazas) {
@@ -64,7 +64,7 @@ public class Furgoneta extends Vehiculo{
 
     @Override
     public String toString() {
-        return ":" + tam.toString();
+        return super.toString()+":" + tam.toString();
     }
     
     
