@@ -25,6 +25,33 @@ import java.io.ObjectOutputStream;
  * @author cronida
  */
 public class Main {
+    
+    
+    public static void escribirObjeto(String fichero, ArrayList<Vehiculo> lista){
+         
+        try (ObjectOutputStream flujo =new ObjectOutputStream(new FileOutputStream(fichero))) {
+            for(Vehiculo i : lista){
+                if(i instanceof Turismo && fichero.equals("turismo.dat")){
+                    flujo.writeObject(i);
+                }
+
+                if(i instanceof Deportivo && fichero.equals("deportivo.dat")){
+                    flujo.writeObject(i);
+                }
+
+                if(i instanceof Furgoneta && fichero.equals("furgoneta.dat")){
+                    flujo.writeObject(i);
+                }
+                
+            }
+
+        } catch (FileNotFoundException fnfe) {
+            System.out.println("El fichero" + fichero + "no existe.");
+        } catch (IOException ioe) {
+            System.out.println(ioe.getMessage());
+        }
+    }
+    
     public static void main(String[] args) {
         String idFichero = "vehiculos.txt",linea;
         String [] tokens, campo;
@@ -76,6 +103,11 @@ public class Main {
            
            Collections.sort(lista, (Vehiculo a1, Vehiculo a2) -> a1.getMatricula().compareTo(a2.getMatricula()));
            
+           /* SIMPLIFICO UTILIZANDO UN METODO */
+           escribirObjeto("turismo.dat", lista);
+           escribirObjeto("deportivo.dat", lista);
+           escribirObjeto("furgoneta.dat", lista);
+           
            for(Vehiculo i : lista){
               if(i instanceof Turismo){
                   listaTurismo.add((Turismo) i);
@@ -90,7 +122,8 @@ public class Main {
               }
             }          
             
-            String ficheroTurismo = "turismo.dat";
+            
+            /*String ficheroTurismo = "turismo.dat";
             try (ObjectOutputStream flujoTurismo =new ObjectOutputStream(new FileOutputStream(ficheroTurismo))) {
                 for(Turismo i : listaTurismo){
                     flujoTurismo.writeObject(i);
@@ -124,7 +157,7 @@ public class Main {
                 System.out.println("El fichero" + ficheroFurgoneta + "no existe.");
             } catch (IOException ioe) {
                 System.out.println(ioe.getMessage());
-            }
+            }*/
 
        } catch (FileNotFoundException e) {
            System.out.println(e.getMessage());
