@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ejercicio4;
+package ejercicio7;
 
-import ejercicio7.Vehiculo;
+import ejercicio4.*;
 import java.util.Objects;
 
 /**

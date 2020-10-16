@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ejercicio4;
+package ejercicio8;
 
+import ejercicio7.*;
 import java.util.Objects;
 import java.util.Random;
 

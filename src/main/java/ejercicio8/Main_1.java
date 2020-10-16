@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ejercicio4;
+package ejercicio8;
 
-import ejercicio7.Vehiculo;
+import ejercicio7.*;
+import ejercicio4.*;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -16,7 +17,7 @@ import java.util.Random;
  *
  * @author cronida
  */
-public class Main {
+public class Main_1 {
     public static void main(String[] args) {
         ArrayList<Vehiculo> lista = new ArrayList<>();
         
