@@ -88,13 +88,7 @@ public class Main {
               if(i instanceof Furgoneta){
                   listaFurgoneta.add((Furgoneta) i);
               }
-            }
-           
-            int cantidadBytes = 0;
-            final int TAM = 1024 * 16;
-            // Buffer para guardar los bytes leídos. El buffer es de 16KB (16 * 1024)
-            byte[] buffer = new byte[TAM];
-            
+            }          
             
             String ficheroTurismo = "turismo.dat";
             try (ObjectOutputStream flujoTurismo =new ObjectOutputStream(new FileOutputStream(ficheroTurismo))) {
