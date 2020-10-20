@@ -1,0 +1,10 @@
+1945EUF:Hacendado:No:Rojo:5:Pequeña
+2682JUT:Hacendado:No:Rojo:5:Pequeña
+3024EVE:Hacendado:No:Rojo:5:Pequeña
+4259LBQ:Hacendado:No:Rojo:5:Pequeña
+4606NAK:Hacendado:No:Rojo:5:Pequeña
+4911HAC:Hacendado:No:Rojo:1:Pequeña
+6213SVA:Hacendado:No:Rojo:5:Pequeña
+6568GAV:Hacendado:No:Rojo:5:Pequeña
+7027DES:Hacendado:No:Rojo:5:Pequeña
+9890MNA:Hacendado:No:Rojo:5:Pequeña
