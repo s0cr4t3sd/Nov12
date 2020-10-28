@@ -251,7 +251,7 @@ public class Main {
         System.out.println("");
         System.out.println(
                 lista.stream()
-                .anyMatch(v -> v.getMarca().equals("Negro") && v.getColor().equals("Negro"))
+                .anyMatch(v -> v.getMarca().equals("Peugeot") && v.getColor().equals("Negro"))
         );
         
         
