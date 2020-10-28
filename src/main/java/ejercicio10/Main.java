@@ -15,7 +15,9 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
+import java.util.function.Predicate;
 
 
 /**
@@ -94,26 +96,31 @@ public class Main {
     }
     
     private static void leerFichero(String idFichero, ArrayList<Vehiculo> lista){
-        String [] campo;
+        String [] tokens,campo;
         String linea;
         try (Scanner datosFichero = new Scanner(new File(idFichero))){
+
+           System.out.println("Separando cada elemento del fichero: ");
+           System.out.println("");
+
            while (datosFichero.hasNextLine()) {
 
                linea = datosFichero.nextLine();
-               campo = linea.split(":");
+               tokens = linea.split(" - ");
+               campo = tokens[1].split(":");
                
                int nPlazas = Integer.parseInt(campo[4]);
-                              
-               switch(idFichero){
-                    case "turismo.txt": //TURISMO
+               
+               switch(tokens[0]){
+                    case "0": //TURISMO
                         boolean baca = Boolean.parseBoolean(campo[5]);                       
                         lista.add(new Turismo(baca, campo[0], campo[1], campo[2], campo[3], nPlazas));
                         break;
-                    case "deportivo.txt": //DEPORTIVO
+                    case "1": //DEPORTIVO
                         int caballos = Integer.parseInt(campo[5]);
                         lista.add(new Deportivo(caballos, campo[0], campo[1], campo[2], campo[3], nPlazas));
                         break;
-                    case "furgoneta.txt": //FURGONETA
+                    case "2": //FURGONETA
                         Tamanio tam = null;
                         switch(campo[5]){
                             case "Pequeña":
@@ -132,6 +139,12 @@ public class Main {
                
            }
            
+           Collections.sort(lista, (Vehiculo a1, Vehiculo a2) -> a1.getMatricula().compareTo(a2.getMatricula()));
+           
+           for(Vehiculo i : lista){
+               System.out.println(i);
+           }
+
        } catch (FileNotFoundException e) {
            System.out.println(e.getMessage());
        } 
@@ -140,6 +153,8 @@ public class Main {
         ArrayList<Vehiculo> lista = new ArrayList<>();
         ArrayList<String> listaContDir = new ArrayList<>();
         String[] token;
+        
+        leerFichero("vehiculos.txt",lista);
         
        /* leerFichero("deportivo.txt",lista);
         leerFichero("furgoneta.txt",lista);
@@ -202,5 +217,43 @@ public class Main {
         //Mostrar el contenido de la carpeta donde estaban los *.txt originales.
         System.out.println("");
         mostrarContenidoDir("./");
+        
+        System.out.println("");
+        System.out.println("");
+        System.out.println("Streams:");
+        
+        //Predicate<String> blancos = 
+        //Imprime por pantalla todos los coches blancos, distintos, ordenador por matrícula.
+        lista.stream()
+                .filter(v -> v.getColor().equals("Blanco"))
+                .sorted((v1,v2)-> v1.getMatricula().compareTo(v2.getMatricula()))
+                .forEach(System.out::println);
+        
+        //Imprime por pantalla todas las marcas de coches distintas de aquellos
+        //coches que estén disponibles. Como no tenia un atributo disponible, lo he hecho con el string de modelo.
+        //Con un boolean ser haria asi -> .filter(v -> v.getDisponible())
+        System.out.println("");
+        lista.stream()
+                .filter(v -> v.getModelo().equals("Si"))
+                .map(v1 -> v1.getMarca())
+                .distinct()
+                .forEach(System.out::println);
+        
+        //Saber la cantidad de vehículos Citroen.
+        System.out.println("");
+        System.out.println(
+                lista.stream()
+                .filter(v -> v.getMarca().equals("Citroen"))
+                .count()
+        );
+        
+        //Comprueba si hay algún Peugeot negro disponible en la lista.
+        System.out.println("");
+        System.out.println(
+                lista.stream()
+                .anyMatch(v -> v.getMarca().equals("Negro") && v.getColor().equals("Negro"))
+        );
+        
+        
     }
 }
